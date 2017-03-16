@@ -27,7 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1F07E51A1E7A7C6E0084A66A /* ProofOfConcert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProofOfConcert.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F07E51A1E7A7C6E0084A66A /* ProofOfConcept.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProofOfConcept.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F07E51D1E7A7C6E0084A66A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F07E51F1E7A7C6E0084A66A /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		1F07E5211E7A7C6E0084A66A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -35,7 +35,7 @@
 		1F07E5261E7A7C6E0084A66A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F07E5291E7A7C6E0084A66A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F07E52B1E7A7C6E0084A66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F07E5301E7A7C6F0084A66A /* ProofOfConcertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProofOfConcertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F07E5301E7A7C6F0084A66A /* ProofOfConceptTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProofOfConceptTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F07E5341E7A7C6F0084A66A /* ProofOfConcertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofOfConcertTests.swift; sourceTree = "<group>"; };
 		1F07E5361E7A7C6F0084A66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,8 +61,8 @@
 		1F07E5111E7A7C6D0084A66A = {
 			isa = PBXGroup;
 			children = (
-				1F07E51C1E7A7C6E0084A66A /* ProofOfConcert */,
-				1F07E5331E7A7C6F0084A66A /* ProofOfConcertTests */,
+				1F07E51C1E7A7C6E0084A66A /* ProofOfConcept */,
+				1F07E5331E7A7C6F0084A66A /* ProofOfConceptTests */,
 				1F07E51B1E7A7C6E0084A66A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,13 +70,13 @@
 		1F07E51B1E7A7C6E0084A66A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1F07E51A1E7A7C6E0084A66A /* ProofOfConcert.app */,
-				1F07E5301E7A7C6F0084A66A /* ProofOfConcertTests.xctest */,
+				1F07E51A1E7A7C6E0084A66A /* ProofOfConcept.app */,
+				1F07E5301E7A7C6F0084A66A /* ProofOfConceptTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1F07E51C1E7A7C6E0084A66A /* ProofOfConcert */ = {
+		1F07E51C1E7A7C6E0084A66A /* ProofOfConcept */ = {
 			isa = PBXGroup;
 			children = (
 				1F07E51D1E7A7C6E0084A66A /* AppDelegate.swift */,
@@ -87,24 +87,26 @@
 				1F07E5281E7A7C6E0084A66A /* LaunchScreen.storyboard */,
 				1F07E52B1E7A7C6E0084A66A /* Info.plist */,
 			);
+			name = ProofOfConcept;
 			path = ProofOfConcert;
 			sourceTree = "<group>";
 		};
-		1F07E5331E7A7C6F0084A66A /* ProofOfConcertTests */ = {
+		1F07E5331E7A7C6F0084A66A /* ProofOfConceptTests */ = {
 			isa = PBXGroup;
 			children = (
 				1F07E5341E7A7C6F0084A66A /* ProofOfConcertTests.swift */,
 				1F07E5361E7A7C6F0084A66A /* Info.plist */,
 			);
+			name = ProofOfConceptTests;
 			path = ProofOfConcertTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1F07E5191E7A7C6E0084A66A /* ProofOfConcert */ = {
+		1F07E5191E7A7C6E0084A66A /* ProofOfConcept */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F07E5391E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcert" */;
+			buildConfigurationList = 1F07E5391E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcept" */;
 			buildPhases = (
 				1F07E5161E7A7C6E0084A66A /* Sources */,
 				1F07E5171E7A7C6E0084A66A /* Frameworks */,
@@ -114,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = ProofOfConcert;
+			name = ProofOfConcept;
 			productName = ProofOfConcert;
-			productReference = 1F07E51A1E7A7C6E0084A66A /* ProofOfConcert.app */;
+			productReference = 1F07E51A1E7A7C6E0084A66A /* ProofOfConcept.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1F07E52F1E7A7C6F0084A66A /* ProofOfConcertTests */ = {
+		1F07E52F1E7A7C6F0084A66A /* ProofOfConceptTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1F07E53C1E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcertTests" */;
+			buildConfigurationList = 1F07E53C1E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConceptTests" */;
 			buildPhases = (
 				1F07E52C1E7A7C6F0084A66A /* Sources */,
 				1F07E52D1E7A7C6F0084A66A /* Frameworks */,
@@ -132,9 +134,9 @@
 			dependencies = (
 				1F07E5321E7A7C6F0084A66A /* PBXTargetDependency */,
 			);
-			name = ProofOfConcertTests;
+			name = ProofOfConceptTests;
 			productName = ProofOfConcertTests;
-			productReference = 1F07E5301E7A7C6F0084A66A /* ProofOfConcertTests.xctest */;
+			productReference = 1F07E5301E7A7C6F0084A66A /* ProofOfConceptTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +162,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1F07E5151E7A7C6D0084A66A /* Build configuration list for PBXProject "ProofOfConcert" */;
+			buildConfigurationList = 1F07E5151E7A7C6D0084A66A /* Build configuration list for PBXProject "ProofOfConcept" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -173,8 +175,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1F07E5191E7A7C6E0084A66A /* ProofOfConcert */,
-				1F07E52F1E7A7C6F0084A66A /* ProofOfConcertTests */,
+				1F07E5191E7A7C6E0084A66A /* ProofOfConcept */,
+				1F07E52F1E7A7C6F0084A66A /* ProofOfConceptTests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,7 +225,7 @@
 /* Begin PBXTargetDependency section */
 		1F07E5321E7A7C6F0084A66A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 1F07E5191E7A7C6E0084A66A /* ProofOfConcert */;
+			target = 1F07E5191E7A7C6E0084A66A /* ProofOfConcept */;
 			targetProxy = 1F07E5311E7A7C6F0084A66A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -378,7 +380,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.ironworksmedialimited.ProofOfConcertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcert.app/ProofOfConcert";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";
 			};
 			name = Debug;
 		};
@@ -393,14 +395,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.co.ironworksmedialimited.ProofOfConcertTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcert.app/ProofOfConcert";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProofOfConcept.app/ProofOfConcept";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1F07E5151E7A7C6D0084A66A /* Build configuration list for PBXProject "ProofOfConcert" */ = {
+		1F07E5151E7A7C6D0084A66A /* Build configuration list for PBXProject "ProofOfConcept" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F07E5371E7A7C6F0084A66A /* Debug */,
@@ -409,21 +411,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1F07E5391E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcert" */ = {
+		1F07E5391E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcept" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F07E53A1E7A7C6F0084A66A /* Debug */,
 				1F07E53B1E7A7C6F0084A66A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		1F07E53C1E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConcertTests" */ = {
+		1F07E53C1E7A7C6F0084A66A /* Build configuration list for PBXNativeTarget "ProofOfConceptTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1F07E53D1E7A7C6F0084A66A /* Debug */,
 				1F07E53E1E7A7C6F0084A66A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
