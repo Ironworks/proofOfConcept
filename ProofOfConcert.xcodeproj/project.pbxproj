@@ -14,6 +14,8 @@
 		1F07E5271E7A7C6E0084A66A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F07E5261E7A7C6E0084A66A /* Assets.xcassets */; };
 		1F07E52A1E7A7C6E0084A66A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F07E5281E7A7C6E0084A66A /* LaunchScreen.storyboard */; };
 		1F07E5351E7A7C6F0084A66A /* ProofOfConcertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5341E7A7C6F0084A66A /* ProofOfConcertTests.swift */; };
+		1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5401E7A7E0C0084A66A /* Model.swift */; };
+		1F07E5441E7A81F30084A66A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5431E7A81F30084A66A /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		1F07E5301E7A7C6F0084A66A /* ProofOfConcertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProofOfConcertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F07E5341E7A7C6F0084A66A /* ProofOfConcertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProofOfConcertTests.swift; sourceTree = "<group>"; };
 		1F07E5361E7A7C6F0084A66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F07E5401E7A7E0C0084A66A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1F07E5431E7A81F30084A66A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +83,8 @@
 		1F07E51C1E7A7C6E0084A66A /* ProofOfConcert */ = {
 			isa = PBXGroup;
 			children = (
+				1F07E5421E7A81DB0084A66A /* Services */,
+				1F07E53F1E7A7D710084A66A /* Model */,
 				1F07E51D1E7A7C6E0084A66A /* AppDelegate.swift */,
 				1F07E51F1E7A7C6E0084A66A /* MasterViewController.swift */,
 				1F07E5211E7A7C6E0084A66A /* DetailViewController.swift */,
@@ -97,6 +103,22 @@
 				1F07E5361E7A7C6F0084A66A /* Info.plist */,
 			);
 			path = ProofOfConcertTests;
+			sourceTree = "<group>";
+		};
+		1F07E53F1E7A7D710084A66A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1F07E5401E7A7E0C0084A66A /* Model.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1F07E5421E7A81DB0084A66A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1F07E5431E7A81F30084A66A /* DataService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +229,8 @@
 				1F07E5221E7A7C6E0084A66A /* DetailViewController.swift in Sources */,
 				1F07E5201E7A7C6E0084A66A /* MasterViewController.swift in Sources */,
 				1F07E51E1E7A7C6E0084A66A /* AppDelegate.swift in Sources */,
+				1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */,
+				1F07E5441E7A81F30084A66A /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
