@@ -11,13 +11,10 @@ import Foundation
 
 class DataService {
     
-    func getData() {
-        
-        let URLString = "http://somatest.ground-control.co.uk/SummerMaintService/?q=dataRequest&token=4C68F84A-CFE1-4245-B782-300D60438CB11&parentID=&dataType=1005&dateTime=1900-01- 01T00:00:00.000&latitude=0.0&longitude=0.0&radius=0.0&rangeStart=0&rangeEnd=50"
-        let urlString = "https://somatest.ground-control.co.uk/SummerMaintService/"
-        
+    func getData(completionHandler: @escaping ([Visit]) -> ()) {
+                
         var urLComponents = URLComponents()
-        urLComponents.scheme = "https"
+        urLComponents.scheme = "http"
         urLComponents.host = "somatest.ground-control.co.uk"
         urLComponents.path = "/SummerMaintService/"
         
@@ -33,11 +30,10 @@ class DataService {
         let rangeEnd = URLQueryItem(name: "rangeEnd", value: "50")
         urLComponents.queryItems = [dataRequest, token, parentId, dataType, dateTime, latitude, longitude, radius, rangeStart, rangeEnd]
 
-        let config = URLSessionConfiguration.default // Session Configuration
-        let session = URLSession(configuration: config) // Load configuration into Session
+        let config = URLSessionConfiguration.default
+        let session = URLSession(configuration: config)
         
-        let task = session.dataTask(with: urLComponents.url!, completionHandler: {
-            (data, response, error) in
+        let task = session.dataTask(with: urLComponents.url!, completionHandler: { (data, response, error) in
             
             
             if let response = response {
@@ -51,12 +47,12 @@ class DataService {
                 
                 do {
                     
-                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [AnyObject]
+                    if let json = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? [String:AnyObject]
                     {
                         
-                        //Implement your logic
-                        print(json)
-                        
+                        let parser = JSONParser()
+                        let results = parser.parse(json: json)
+                        completionHandler(results)
                     }
                     
                 } catch {

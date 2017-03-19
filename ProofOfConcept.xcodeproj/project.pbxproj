@@ -16,6 +16,7 @@
 		1F07E5351E7A7C6F0084A66A /* ProofOfConcertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5341E7A7C6F0084A66A /* ProofOfConcertTests.swift */; };
 		1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5401E7A7E0C0084A66A /* Model.swift */; };
 		1F07E5441E7A81F30084A66A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5431E7A81F30084A66A /* DataService.swift */; };
+		F0254C531E7F1553006CBD53 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0254C521E7F1553006CBD53 /* JSONParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		1F07E5361E7A7C6F0084A66A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F07E5401E7A7E0C0084A66A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1F07E5431E7A81F30084A66A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		F0254C521E7F1553006CBD53 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				1F07E5431E7A81F30084A66A /* DataService.swift */,
+				F0254C521E7F1553006CBD53 /* JSONParser.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				1F07E5221E7A7C6E0084A66A /* DetailViewController.swift in Sources */,
 				1F07E5201E7A7C6E0084A66A /* MasterViewController.swift in Sources */,
+				F0254C531E7F1553006CBD53 /* JSONParser.swift in Sources */,
 				1F07E51E1E7A7C6E0084A66A /* AppDelegate.swift in Sources */,
 				1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */,
 				1F07E5441E7A81F30084A66A /* DataService.swift in Sources */,
