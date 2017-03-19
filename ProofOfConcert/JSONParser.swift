@@ -7,8 +7,15 @@
 //
 
 import Foundation
+import MapKit
 
 class JSONParser {
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sss"
+        return dateFormatter
+    }()
     
     func parse(json: [String: AnyObject]) -> [Visit] {
         
@@ -18,11 +25,19 @@ class JSONParser {
         
         for dict in records {
             
+            guard let latitude = dict["latitude"] as? CLLocationDegrees,
+                let longitude = dict["longitude"] as? CLLocationDegrees else { continue }
+    
+            let startDate = self.dateFormatter.date(from: dict["expectedStart"] as! String)
+            
+            let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
             let visit = Visit(id: dict["id"] as! String,
                               clientName: dict["client"] as! String,
                               siteId: dict["siteId"] as! String,
                               clientInstructions: dict["clientInstructions"] as! String,
-                              startDate: dict["expectedStart"] as! String)
+                              startDate: startDate!,
+                              location: location)
             visits.append(visit)
         }
         

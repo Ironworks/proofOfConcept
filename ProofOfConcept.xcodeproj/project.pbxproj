@@ -17,6 +17,7 @@
 		1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5401E7A7E0C0084A66A /* Model.swift */; };
 		1F07E5441E7A81F30084A66A /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F07E5431E7A81F30084A66A /* DataService.swift */; };
 		F0254C531E7F1553006CBD53 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0254C521E7F1553006CBD53 /* JSONParser.swift */; };
+		F0254C581E7F22E6006CBD53 /* ClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0254C571E7F22E6006CBD53 /* ClientTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		1F07E5401E7A7E0C0084A66A /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1F07E5431E7A81F30084A66A /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		F0254C521E7F1553006CBD53 /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		F0254C571E7F22E6006CBD53 /* ClientTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		1F07E51C1E7A7C6E0084A66A /* ProofOfConcept */ = {
 			isa = PBXGroup;
 			children = (
+				F0254C541E7F21AB006CBD53 /* Custom Cells */,
 				1F07E5421E7A81DB0084A66A /* Services */,
 				1F07E53F1E7A7D710084A66A /* Model */,
 				1F07E51D1E7A7C6E0084A66A /* AppDelegate.swift */,
@@ -124,6 +127,14 @@
 				F0254C521E7F1553006CBD53 /* JSONParser.swift */,
 			);
 			name = Services;
+			sourceTree = "<group>";
+		};
+		F0254C541E7F21AB006CBD53 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F0254C571E7F22E6006CBD53 /* ClientTableViewCell.swift */,
+			);
+			name = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,6 +245,7 @@
 				1F07E5221E7A7C6E0084A66A /* DetailViewController.swift in Sources */,
 				1F07E5201E7A7C6E0084A66A /* MasterViewController.swift in Sources */,
 				F0254C531E7F1553006CBD53 /* JSONParser.swift in Sources */,
+				F0254C581E7F22E6006CBD53 /* ClientTableViewCell.swift in Sources */,
 				1F07E51E1E7A7C6E0084A66A /* AppDelegate.swift in Sources */,
 				1F07E5411E7A7E0C0084A66A /* Model.swift in Sources */,
 				1F07E5441E7A81F30084A66A /* DataService.swift in Sources */,

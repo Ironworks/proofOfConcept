@@ -11,8 +11,13 @@ import UIKit
 class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
-    var visits: [Visit] = []
-
+    private var visits: [Visit] = []
+    
+    private lazy var dateFormatter: DateFormatter = {
+        let dataFormatter = DateFormatter()
+        dataFormatter.dateStyle = .long
+        return dataFormatter
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +27,12 @@ class MasterViewController: UITableViewController {
         
         dataService.getData { [unowned self] (visits) in
             self.visits = visits
-            print(visits)
-            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                print("Count = \(self.visits.count)")
+                self.tableView.reloadData()
+            }
+            
         }
     }
 
@@ -63,27 +72,17 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ClientTableViewCell
 
         let visit = visits[indexPath.row] 
-        cell.textLabel!.text = visit.clientName
+        cell.clientNameLabel.text = visit.clientName
+        cell.siteIdLabel.text = visit.siteId
+        cell.startDateLabel.text = self.dateFormatter.string(from: visit.startDate)
         return cell
     }
-
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+   
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(114.0)
     }
-
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            visits.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
-    }
-
-
 }
 

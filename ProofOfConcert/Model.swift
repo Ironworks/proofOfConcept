@@ -7,10 +7,13 @@
 //
 
 import Foundation
+import MapKit
+
 struct Visit {
     var id: String
     var clientName: String
     var siteId: String
     var clientInstructions: String
-    var startDate: String
+    var startDate: Date
+    var location: CLLocationCoordinate2D
 }
