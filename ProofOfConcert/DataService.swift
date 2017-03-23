@@ -9,9 +9,10 @@
 import Foundation
 
 
+
 class DataService {
     
-    func getData(completionHandler: @escaping ([Visit]) -> ()) {
+    func getData(completionHandler: @escaping (Void) -> ()) {
                 
         var urLComponents = URLComponents()
         urLComponents.scheme = "http"
@@ -51,8 +52,8 @@ class DataService {
                     {
                         
                         let parser = JSONParser()
-                        let results = parser.parse(json: json)
-                        completionHandler(results)
+                        parser.parse(json: json)
+                        completionHandler()
                     }
                     
                 } catch {

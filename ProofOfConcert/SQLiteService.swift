@@ -9,11 +9,20 @@
 import Foundation
 import MapKit
 
+let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+
 class SQLiteService {
     
+    private lazy var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.sss"
+        return dateFormatter
+    }()
+    
+    var database:OpaquePointer? = nil
+    
     func connectToDatabase() {
-        var database:OpaquePointer? = nil
-        var result = sqlite3_open(dataFilePath(), &database)
+        let result = sqlite3_open(dataFilePath(), &database)
         if result != SQLITE_OK {
             sqlite3_close(database)
             print("Failed to open database")
@@ -22,91 +31,117 @@ class SQLiteService {
     }
     
     func createTable() {
+        
+        self.connectToDatabase()
+
         let createSQL = "CREATE TABLE IF NOT EXISTS VISIT " +
-        "(ID TEXT PRIMARY KEY," +
+        "(VISIT_ID TEXT," +
         "CLIENT_NAME TEXT," +
         "SITE_ID TEXT," +
-        "CLIENT_INSTRUCTIONS," +
+        "CLIENT_INSTRUCTIONS TEXT," +
         "START_DATE TEXT," +
-        "LATITUDE REAL," +
-        "LONGITUDE REAL;)"
+        "LATITUDE TEXT," +
+        "LONGITUDE TEXT);"
         
         var errMsg:UnsafeMutablePointer<Int8>? = nil
-        result = sqlite3_exec(database, createSQL, nil, nil, &errMsg)
+        let result = sqlite3_exec(database, createSQL, nil, nil, &errMsg)
         if (result != SQLITE_OK) {
             sqlite3_close(database)
-            print("Failed to create table")
+            let error = String.init(cString: errMsg!)
+            print("Failed to create table \(error)")
             return
         }
+        
+        sqlite3_close(database)
 
     }
     
     func getVisits() -> [Visit] {
-        let visits: [Visits] = []
         
-        let query = "SELECT ROW, FIELD_DATA FROM FIELDS ORDER BY ROW"
+        var visits: [Visit] = []
+        self.connectToDatabase()
+        
+        let query = "SELECT VISIT_ID, CLIENT_NAME, SITE_ID, CLIENT_INSTRUCTIONS, START_DATE, LATITUDE, LONGITUDE FROM VISIT"
         var statement:OpaquePointer? = nil
         if sqlite3_prepare_v2(database, query, -1, &statement, nil) == SQLITE_OK {
             while sqlite3_step(statement) == SQLITE_ROW {
-                let id = sqlite3_column_text(sqlite3_column_int(statement, 0))
-                let clientName = sqlite3_column_text(sqlite3_column_int(statement, 1))
-                let siteId = sqlite3_column_text(sqlite3_column_int(statement, 2))
-                let clientInstructions = sqlite3_column_text(sqlite3_column_int(statement, 3))
-                let startDate = sqlite3_column_text(sqlite3_column_int(statement, 4))
-                let longitude = sqlite3_column_text(sqlite3_column_int(statement, 5))
-                let latitude = sqlite3_column_text(sqlite3_column_int(statement, 6))
-                let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                let idField = sqlite3_column_text(statement, 0)
+                let id = String(cString: idField!)
+                let clientNameField = sqlite3_column_text(statement, 1)
+                let clientName = String.init(cString: clientNameField!)
+                let siteIdField = sqlite3_column_text(statement, 2)
+                let siteId = String.init(cString: siteIdField!)
+                let clientInstructionsField = sqlite3_column_text(statement, 3)
+                let clientInstructions = String.init(cString: clientInstructionsField!)
+                let startDateTextField = sqlite3_column_text(statement, 4)
+                let startDateText = String.init(cString: startDateTextField!)
+                let startDate = self.dateFormatter.date(from: startDateText)
+                let latitudeField = sqlite3_column_text(statement, 5)
+                let latitude = String.init(cString: latitudeField!)
+                let longitudeField = sqlite3_column_text(statement, 6)
+                let longitude = String.init(cString: longitudeField!)
+
+                let location = CLLocationCoordinate2D(latitude: Double(latitude)!, longitude: Double(longitude)!)
                 
-                let fieldValue = String.init(cString: UnsafePointer<CChar>(rowData!))
                 let visit = Visit(id: id,
                                   clientName: clientName,
                                   siteId: siteId,
-                                  clientInstructions: clientInstructions, startDate: startDate,
-                                  location: <#T##CLLocationCoordinate2D#>)
+                                  clientInstructions: clientInstructions,
+                                  startDate: startDate!,
+                                  location: location)
+                visits.append(visit)
             }
             sqlite3_finalize(statement)
         }
-    }
-    
-    func getVisits() {
-        let update = "INSERT OR REPLACE INTO VISIT (ROW, FIELD_DATA) " +
-        "VALUES (?, ?);"
-        var statement:OpaquePointer? = nil
-        if sqlite3_prepare_v2(database, update, -1, &statement, nil) == SQLITE_OK {
-            let text = field.text
-            sqlite3_bind_int(statement, 1, Int32(i))
-            sqlite3_bind_text(statement, 2, text!, -1, nil)
-        }
-        if sqlite3_step(statement) != SQLITE_DONE {
-            print("Error updating table")
-            sqlite3_close(database)
-            return
-        }
-        sqlite3_finalize(statement)
-
+        
+        sqlite3_close(database)
+        
+        return visits
     }
     
     func save(visit: Visit) {
-        let update = "INSERT OR REPLACE INTO FIELDS (ROW, FIELD_DATA) " +
-        "VALUES (?, ?);"
+        
+        self.connectToDatabase()
+        
+        let update = "INSERT OR REPLACE INTO VISIT (VISIT_ID, CLIENT_NAME, SITE_ID, CLIENT_INSTRUCTIONS, START_DATE, LATITUDE, LONGITUDE) VALUES (?, ?, ?, ?, ?, ?, ?);"
         var statement:OpaquePointer? = nil
-        if sqlite3_prepare_v2(database, update, -1, &statement, nil) == SQLITE_OK {
-            let text = field.text
-            sqlite3_bind_int(statement, 1, Int32(i))
-            sqlite3_bind_text(statement, 2, text!, -1, nil)
+        let code =  sqlite3_prepare_v2(database, update, -1, &statement, nil)
+        
+        if code ==  SQLITE_OK {
+            sqlite3_bind_text(statement, 1, visit.id.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(statement, 2, visit.clientName.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(statement, 3, visit.siteId.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            sqlite3_bind_text(statement, 4, visit.clientInstructions.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            let startDateText = self.dateFormatter.string(from: visit.startDate)
+            sqlite3_bind_text(statement, 5, startDateText.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            let latitude = String(visit.location.latitude)
+            sqlite3_bind_text(statement, 6, latitude.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+            let longitude = String(visit.location.longitude)
+            sqlite3_bind_text(statement, 7, longitude.cString(using: .utf8), -1, SQLITE_TRANSIENT)
+    
         }
-        if sqlite3_step(statement) != SQLITE_DONE {
+        let result = sqlite3_step(statement)
+        
+        if (result != SQLITE_DONE) {
             print("Error updating table")
             sqlite3_close(database)
             return
         }
         sqlite3_finalize(statement)
+        
+        sqlite3_close(database)
 
     }
     
-    func closeDatabase() {
-        sqlite3_close(database)
+    func dataFilePath() -> String {
+        let urls = FileManager.default.urls(for:
+            .documentDirectory, in: .userDomainMask)
+        var url:String?
+        url = urls.first?.appendingPathComponent("data.sqlite").path
+        print("\(url)")
+        return url!
     }
+
 }
 
 

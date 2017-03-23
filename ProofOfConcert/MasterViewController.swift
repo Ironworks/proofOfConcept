@@ -12,12 +12,12 @@ class MasterViewController: UITableViewController {
 
     var detailViewController: DetailViewController? = nil
     private var visits: [Visit] = []
-    
     private lazy var dateFormatter: DateFormatter = {
         let dataFormatter = DateFormatter()
         dataFormatter.dateStyle = .long
         return dataFormatter
     }()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +26,14 @@ class MasterViewController: UITableViewController {
         let dataService = DataService()
         
         dataService.getData { [unowned self] (visits) in
-            self.visits = visits
+            
+            let sqlService = SQLiteService()
+            self.visits = sqlService.getVisits()
             
             DispatchQueue.main.async {
                 print("Count = \(self.visits.count)")
                 self.tableView.reloadData()
-            }
-            
+            }            
         }
     }
 

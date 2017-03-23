@@ -17,11 +17,12 @@ class JSONParser {
         return dateFormatter
     }()
     
-    func parse(json: [String: AnyObject]) -> [Visit] {
+    func parse(json: [String: AnyObject]) {
         
-        var visits: [Visit] = []
         let data = json["data"] as! [String: AnyObject]
         let records = data["records"] as! [[String: AnyObject]]
+        let sqlService = SQLiteService()
+        sqlService.createTable()
         
         for dict in records {
             
@@ -38,9 +39,8 @@ class JSONParser {
                               clientInstructions: dict["clientInstructions"] as! String,
                               startDate: startDate!,
                               location: location)
-            visits.append(visit)
+            sqlService.save(visit: visit)
         }
         
-        return visits
     }
 }
