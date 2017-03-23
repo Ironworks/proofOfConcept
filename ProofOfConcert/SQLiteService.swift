@@ -30,6 +30,31 @@ class SQLiteService {
         }
     }
     
+    func dataExists() -> Bool {
+        
+        var dataExists = false
+        
+        self.connectToDatabase()
+        
+        let query = "SELECT COUNT (*)  FROM VISIT"
+        var statement:OpaquePointer? = nil
+        if sqlite3_prepare_v2(database, query, -1, &statement, nil) == SQLITE_OK {
+            
+            while sqlite3_step(statement) == SQLITE_ROW {
+                let count = sqlite3_column_int(statement, 0);
+                if count > 0 {
+                    dataExists = true
+                }
+            }
+        }
+        
+        sqlite3_finalize(statement)
+        
+        sqlite3_close(database)
+        
+        return dataExists
+    }
+    
     func createTable() {
         
         self.connectToDatabase()
@@ -138,7 +163,6 @@ class SQLiteService {
             .documentDirectory, in: .userDomainMask)
         var url:String?
         url = urls.first?.appendingPathComponent("data.sqlite").path
-        print("\(url)")
         return url!
     }
 

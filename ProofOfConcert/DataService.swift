@@ -12,7 +12,19 @@ import Foundation
 
 class DataService {
     
+    private func checkForData() -> Bool {
+        let sqlService = SQLiteService()
+        
+        return sqlService.dataExists()
+    }
+    
+    
     func getData(completionHandler: @escaping (Void) -> ()) {
+        
+        if self.checkForData() {
+            completionHandler()
+            return
+        }
                 
         var urLComponents = URLComponents()
         urLComponents.scheme = "http"
